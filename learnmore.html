@@ -47,13 +47,22 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto pe-lg-5 gap-5 m-none">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html"><i class="ri-apps-2-line"></i> HOME</a>
+                            <a class="nav-link" aria-current="page" href="index.html"><i class="ri-apps-2-line"></i> HOME</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="membership.html">Membership</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Membership
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="membership.html">Membership</a></li>
+                                <li><a class="dropdown-item" href="membershipInfo.html">Membership-Info</a></li>
+                            </ul>
+                        </li>
+                        
                     </ul>
                     <div class="d-flex align-items-center gap-4 ms-auto ms-lg-0">
                         <a href="#" class="link-light d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#searchbar">
@@ -64,6 +73,7 @@
                         </a>
                     </div>
                 </div>
+        
                 <!-- Dropdown Button for Mobile (Visible on Mobile Only) -->
                 <div class="d-lg-none ms-auto">
                     <div class="dropdown">
@@ -74,9 +84,9 @@
                             <li><a class="dropdown-item" href="index.html">Home</a></li>
                             <li><a class="dropdown-item" href="about.html">About</a></li>
                             <li><a class="dropdown-item" href="services.html">Services</a></li>
-                            <li><a class="dropdown-item" href="membershipInfo.html">Membership Info</a></li>
                             <li><a class="dropdown-item" href="gallery.html">Gallery</a></li>
                             <li><a class="dropdown-item" href="membership.html">Membership</a></li>
+                            <li><a class="dropdown-item" href="membershipInfo.html">Membership Info</a></li>
                         </ul>
                     </div>
                 </div>
@@ -338,14 +348,10 @@
             </div>
         </div>
     </div>
-
     <script data-cfasync="false" src="js/email-decode.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-
     <script src="js/jquery-3.6.4.min.js"></script>
-
     <script src="js/aos.js"></script>
-
     <script src="js/script.js"></script>
 </body>
 
