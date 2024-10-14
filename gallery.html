@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="icon" href="https://iamosahan.com/pillariximg/icon.png" type="image/png"> -->
+    <!-- <link rel="icon" href="https:/iamosahan.com/pillariximg/icon.png" type="image/png"> -->
     <title>ZANEMA</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -20,61 +20,206 @@
 
     <link rel="stylesheet" href="css/common.css">
 
-
     <style>
-       /* Gallery item hover effect */
-.gallery-item {
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-}
+        .gallery-item {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
 
-.gallery-item:hover {
-    transform: scale(1.05);
-}
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
 
-.gallery-description h5 {
-    font-size: 1.25rem;
-    color: #343a40;
-}
+        .gallery-description h5 {
+            font-size: 1.25rem;
+            color: #343a40;
+        }
 
-.gallery-description p {
-    font-size: 0.875rem;
-    color: #6c757d;
-}
+        .gallery-description p {
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
 
-/* Modal image display */
-.modal-body img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
+        /* Modal image display */
+        .modal-body img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
 
-.modal-body h5 {
-    font-size: 1.5rem;
-    margin-top: 20px;
-}
+        .modal-body h5 {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
 
-.modal-body p {
-    font-size: 1rem;
-    color: #6c757d;
-}
+        .modal-body p {
+            font-size: 1rem;
+            color: #6c757d;
+        }
 
-/* Set modal to take up half the screen */
-.modal-lg {
-    max-width: 50vw;
-}
+        /* Set modal to take up half the screen */
+        .modal-lg {
+            max-width: 50vw;
+        }
 
-.modal-footer {
-    display: flex;
-    justify-content: center;
-}
+        .modal-footer {
+            display: flex;
+            justify-content: center;
+        }
 
-.modal-content {
-    padding: 20px;
-    border-radius: 10px;
-}
+        .modal-content {
+            padding: 20px;
+            border-radius: 10px;
+        }
 
+
+
+
+
+
+        :root {
+            --background-dark: #2d3548;
+            --text-light: rgba(255, 255, 255, 0.6);
+            --text-lighter: rgba(255, 255, 255, 0.9);
+            --accent-color: #F67B50;
+            --spacing-s: 16px;
+            --spacing-m: 24px;
+            --spacing-l: 32px;
+            --spacing-xl: 48px;
+            --spacing-xxl: 64px;
+            --width-container: 1200px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: var(--width-container);
+            margin: 0 auto;
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            background: linear-gradient(190deg, #F67B50 0%, #0f4667 100%) !important;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 4px;
+            height: 0;
+            transition: height 1.5s ease-out, opacity 1.5s ease-out;
+        }
+
+        .timeline-container {
+            position: relative;
+            width: 50%;
+            padding: var(--spacing-l) var(--spacing-xl);
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .timeline-container.left {
+            left: 0;
+        }
+
+        .timeline-container.right {
+            left: 50%;
+        }
+
+        .timeline-container::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            width: 24px;
+            height: 24px;
+            background: var(--text-lighter);
+            border: 4px solid var(--accent-color);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            z-index: 99999;
+        }
+
+        .content {
+            padding: var(--spacing-xl);
+            background-color: var(--text-lighter);
+            position: relative;
+            border-radius: var(--spacing-l);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            text-align: center;
+            color: var(--background-dark);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .content:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        .icon {
+            font-size: 32px;
+            margin-right: var(--spacing-s);
+
+            color: #F67B50;
+            /* Fallback color */
+        }
+
+
+
+
+        a.content-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        @media screen and (max-width: 600px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-container {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 40px;
+                margin-bottom: var(--spacing-l);
+            }
+
+            .timeline-container.left::before,
+            .timeline-container.right::before {
+                left: 31px;
+            }
+
+            .timeline-container.right {
+                left: 0%;
+            }
+
+            .timeline-container.left,
+            .timeline-container.right {
+                left: 0;
+            }
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline.show-line::after {
+            height: 100%;
+            opacity: 1;
+        }
+
+        .timeline.hide-line::after {
+            height: 0;
+            opacity: 0;
+        }
     </style>
 
 
@@ -92,7 +237,7 @@
 
         <nav class="navbar osahan-main-nav navbar-expand lawyer-nav py-3 py-lg-0">
             <div class="container">
-                <!-- Branding -->
+
                 <div class="position-relative d-flex align-items-center gap-2 site-brand">
                     <img src="/img/logo.jpg" style="width: 45px;" alt="">
                     <div class="lh-1">
@@ -101,19 +246,21 @@
                     </div>
                     <a class="stretched-link" href="index-2.html"></a>
                 </div>
-        
-                <!-- Main Navigation (Visible on Larger Screens) -->
+
+
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto pe-lg-5 gap-5 m-none">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="index.html"><i class="ri-apps-2-line"></i> HOME</a>
+                            <a class="nav-link" aria-current="page" href="index.html"><i class="ri-apps-2-line"></i>
+                                HOME</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                         <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Membership
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -121,22 +268,29 @@
                                 <li><a class="dropdown-item" href="membershipInfo.html">Membership-Info</a></li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                     <div class="d-flex align-items-center gap-4 ms-auto ms-lg-0">
-                        <a href="#" class="link-light d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#searchbar">
+                        <a href="#" class="link-light d-none d-lg-block" data-bs-toggle="modal"
+                            data-bs-target="#searchbar">
                             <i class="ri-search-line ri-lg"></i>
                         </a>
                         <a href="#" class="btn btn-primary rounded-pill d-none d-lg-block">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19.23 15.26l-2.54-.29c-.61-.07-1.21.14-1.64.57l-1.84 1.84c-2.83-1.44-5.15-3.75-6.59-6.59l1.85-1.85c.43-.43.64-1.03.57-1.64l-.29-2.52c-.12-1.01-.97-1.77-1.99-1.77H5.03c-1.13 0-2.07.94-2 2.07.53 8.54 7.36 15.36 15.89 15.89 1.13.07 2.07-.87 2.07-2v-1.73c.01-1.01-.75-1.86-1.76-1.98z"/></svg> +225 777414462
+                            <svg xmlns="http:/www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px"
+                                fill="#000000">
+                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                <path
+                                    d="M19.23 15.26l-2.54-.29c-.61-.07-1.21.14-1.64.57l-1.84 1.84c-2.83-1.44-5.15-3.75-6.59-6.59l1.85-1.85c.43-.43.64-1.03.57-1.64l-.29-2.52c-.12-1.01-.97-1.77-1.99-1.77H5.03c-1.13 0-2.07.94-2 2.07.53 8.54 7.36 15.36 15.89 15.89 1.13.07 2.07-.87 2.07-2v-1.73c.01-1.01-.75-1.86-1.76-1.98z" />
+                                </svg> +225 777414462
                         </a>
                     </div>
                 </div>
-        
-                <!-- Dropdown Button for Mobile (Visible on Mobile Only) -->
+
+
                 <div class="d-lg-none ms-auto">
                     <div class="dropdown">
-                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="mobileMenuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="mobileMenuDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             Menu
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileMenuDropdown">
@@ -178,6 +332,60 @@
 
     </div>
 
+    <div class="py-5">
+
+
+        <div class="timeline hide-line">
+            <div class="timeline-container left">
+                <a href="#" class="content-link">
+                    <div class="content">
+                        <h5>23rd-24th, 2024 Board Retreat at Visitors Inn Hotel, Jambiani</h5>
+                        <span class="icon"><i class="fas fa-map-marked-alt"></i></span> <img src="img/Jambiani/9.jpeg"
+                            style="width: 100%;" alt="">
+                    </div>
+                </a>
+            </div>
+            <div class="timeline-container right">
+                <!-- <a href="#" class="content-link"> -->
+                <div class="content">
+                    <span class="icon"><i class="fas fa-filter"></i></span>
+                    <h5>29th July 2024. Technical tripartite meeting on ratification of ILO conventions</h5>
+                    <img src="img/ILO/4.jpeg" style="width: 100%;" alt="">
+                </div>
+                </a>
+            </div>
+            <div class="timeline-container left">
+                <a href="#" class="content-link">
+                    <div class="content">
+                        <span class="icon"><i class="fas fa-user"></i></span>
+                        <h5>The ZANEMA AGM ON 30th March 2024</h5>
+                        <img src="img/AGM/2.jpeg" style="width: 100%;" alt="">
+                    </div>
+                </a>
+            </div>
+            <div class="timeline-container right">
+                <a href="#" class="content-link">
+                    <div class="content">
+                        <span class="icon"><i class="fas fa-phone-alt"></i></span> Members at a meeting in 2018
+                        <img src="img/events/event10.jpeg" style="width: 100%;" alt="">
+
+                    </div>
+                </a>
+            </div>
+            <div class="timeline-container left">
+                <a href="#" class="content-link">
+                    <div class="content">
+                        <span class="icon"><i class="fas fa-heart"></i></span> ED Mr. SALAHI ADRESSING AT MEETING EAEO
+                        in ARUSHA
+                        <img src="img/events/event8.jpeg" style="width: 100%;" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
 
     <div class="py-5">
         <div class="container py-5">
@@ -187,12 +395,387 @@
                     <div class="gap-3" data-aos="fade-up" data-aos-duration="1000">
                         <i class="ri-group-fill ri-3x text-primary"></i>
                         <div class="pt-3">
-                            <h4 class="fw-bold light-text-primary pb-2">Gallery Overview</h4>
-                            <p class="mb-0">This includes some picture of events and workshop done by ZANEMA</p>
+                            <h4 class="fw-bold light-text-primary pb-2">Gallery Jambiani</h4>
+                            <p class="mb-0">This includes some picture of events Jambiani</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Section -->
+                <div class="row g-4 pt-5">
+                    <!-- Gallery Item 1 -->
+
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                            <img src="img/Jambiani/2.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                            <div class="gallery-description mt-2">
+                                <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                            <img src="img/Jambiani/3.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                            <div class="gallery-description mt-2">
+                                <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                            <img src="img/Jambiani/4.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                            <div class="gallery-description mt-2">
+                                <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                            <img src="img/Jambiani/5.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                            <div class="gallery-description mt-2">
+                                <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                            <img src="img/Jambiani/6.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                            <div class="gallery-description mt-2">
+                                <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                            <img src="img/Jambiani/7.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                            <div class="gallery-description mt-2">
+                                <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                            <img src="img/Jambiani/9.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                            <div class="gallery-description mt-2">
+                                <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                            <img src="img/Jambiani/10.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                            <div class="gallery-description mt-2">
+                                <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                            <img src="img/Jambiani/11.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                            <div class="gallery-description mt-2">
+                                <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="py-5"></div>
+    <div class="container py-5">
+        <div class="row g-4 text-center">
+            <!-- Membership Overview -->
+            <div class="col-12">
+                <div class="gap-3" data-aos="fade-up" data-aos-duration="1000">
+                    <i class="ri-group-fill ri-3x text-primary"></i>
+                    <div class="pt-3">
+                        <h4 class="fw-bold light-text-primary pb-2">Gallery ILO</h4>
+                        <p class="mb-0">This includes some picture of events ILO</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div class="row g-4 pt-5">
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/ILO/1.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
                         </div>
                     </div>
                 </div>
 
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/ILO/2.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/ILO/3.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/ILO/4.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/ILO/5.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <div class="py-5"></div>
+    <div class="container py-5">
+        <div class="row g-4 text-center">
+            <!-- Membership Overview -->
+            <div class="col-12">
+                <div class="gap-1" data-aos="fade-up" data-aos-duration="1000">
+                    <i class="ri-group-fill ri-3x text-primary"></i>
+                    <div class="pt-1">
+                        <h4 class="fw-bold light-text-primary pb-2">Gallery AGM</h4>
+                        <p class="mb-0">This includes some picture of events AGM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div class="row g-4 pt-5">
+
+             
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/2.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/3.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/4.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/5.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/6.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/7.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/8.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/9.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/10.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/11.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/12.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/13.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/14.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/15.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/16.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/17.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/18.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/19.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="img/AGM/20.jpeg" class="img-fluid rounded" alt="Gallery Image 1">
+                        <div class="gallery-description mt-2">
+                            <!-- <h5 class="fw-bold">Image Title 1</h5>
+                            <p class="small text-muted">Short description about the first image.</p> -->
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="py-5">
+        <div class="container py-5">
+            <div class="row g-4 text-center">
+                <!-- Membership Overview -->
+                <div class="col-12">
+                    <div class="gap-3" data-aos="fade-up" data-aos-duration="1000">
+                        <i class="ri-group-fill ri-3x text-primary"></i>
+                        <div class="pt-3">
+                            <h4 class="fw-bold light-text-primary pb-2">Gallery WORKSHOP</h4>
+                            <p class="mb-0">This includes some picture of events and workshop done by ZANEMA</p>
+                        </div>
+                    </div>
+                </div>
                 <!-- Gallery Section -->
                 <div class="row g-4 pt-5">
                     <!-- Gallery Item 1 -->
@@ -380,297 +963,293 @@
 
 
 
-<!-- Modal 1 -->
-<div class="modal fade" id="galleryModal1" tabindex="-1" aria-labelledby="galleryModal1Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image1.jpeg" class="img-fluid" alt="Gallery Image 1">
-                <h5 class="fw-bold mt-3">Image Title 1</h5>
-                <p class="text-muted">Detailed description about the first image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal 2 -->
-<div class="modal fade" id="galleryModal2" tabindex="-1" aria-labelledby="galleryModal2Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image2.jpeg" class="img-fluid" alt="Gallery Image 2">
-                <h5 class="fw-bold mt-3">Image Title 2</h5>
-                <p class="text-muted">Detailed description about the second image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 1 -->
+    <!-- <div class="modal fade" id="galleryModal1" tabindex="-1" aria-labelledby="galleryModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image1.jpeg" class="img-fluid" alt="Gallery Image 1">
+                    <h5 class="fw-bold mt-3">Image Title 1</h5>
+                    <p class="text-muted">Detailed description about the first image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 3 -->
-<div class="modal fade" id="galleryModal3" tabindex="-1" aria-labelledby="galleryModal3Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image3.jpeg" class="img-fluid" alt="Gallery Image 3">
-                <h5 class="fw-bold mt-3">Image Title 3</h5>
-                <p class="text-muted">Detailed description about the third image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 2 -->
+    <!-- <div class="modal fade" id="galleryModal2" tabindex="-1" aria-labelledby="galleryModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image2.jpeg" class="img-fluid" alt="Gallery Image 2">
+                    <h5 class="fw-bold mt-3">Image Title 2</h5>
+                    <p class="text-muted">Detailed description about the second image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 4 -->
-<div class="modal fade" id="galleryModal4" tabindex="-1" aria-labelledby="galleryModal4Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image4.jpeg" class="img-fluid" alt="Gallery Image 4">
-                <h5 class="fw-bold mt-3">Image Title 4</h5>
-                <p class="text-muted">Detailed description about the fourth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 3 -->
+    <!-- <div class="modal fade" id="galleryModal3" tabindex="-1" aria-labelledby="galleryModal3Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image3.jpeg" class="img-fluid" alt="Gallery Image 3">
+                    <h5 class="fw-bold mt-3">Image Title 3</h5>
+                    <p class="text-muted">Detailed description about the third image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 5 -->
-<div class="modal fade" id="galleryModal5" tabindex="-1" aria-labelledby="galleryModal5Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image5.jpeg" class="img-fluid" alt="Gallery Image 5">
-                <h5 class="fw-bold mt-3">Image Title 5</h5>
-                <p class="text-muted">Detailed description about the fifth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 4 -->
+    <!-- <div class="modal fade" id="galleryModal4" tabindex="-1" aria-labelledby="galleryModal4Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image4.jpeg" class="img-fluid" alt="Gallery Image 4">
+                    <h5 class="fw-bold mt-3">Image Title 4</h5>
+                    <p class="text-muted">Detailed description about the fourth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 6 -->
-<div class="modal fade" id="galleryModal6" tabindex="-1" aria-labelledby="galleryModal6Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image6.jpeg" class="img-fluid" alt="Gallery Image 6">
-                <h5 class="fw-bold mt-3">Image Title 6</h5>
-                <p class="text-muted">Detailed description about the sixth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 5 -->
+    <!-- <div class="modal fade" id="galleryModal5" tabindex="-1" aria-labelledby="galleryModal5Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image5.jpeg" class="img-fluid" alt="Gallery Image 5">
+                    <h5 class="fw-bold mt-3">Image Title 5</h5>
+                    <p class="text-muted">Detailed description about the fifth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 7 -->
-<div class="modal fade" id="galleryModal7" tabindex="-1" aria-labelledby="galleryModal7Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image7.jpeg" class="img-fluid" alt="Gallery Image 7">
-                <h5 class="fw-bold mt-3">Image Title 7</h5>
-                <p class="text-muted">Detailed description about the seventh image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 6 -->
+    <!-- <div class="modal fade" id="galleryModal6" tabindex="-1" aria-labelledby="galleryModal6Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image6.jpeg" class="img-fluid" alt="Gallery Image 6">
+                    <h5 class="fw-bold mt-3">Image Title 6</h5>
+                    <p class="text-muted">Detailed description about the sixth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 8 -->
-<div class="modal fade" id="galleryModal8" tabindex="-1" aria-labelledby="galleryModal8Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image8.jpeg" class="img-fluid" alt="Gallery Image 8">
-                <h5 class="fw-bold mt-3">Image Title 8</h5>
-                <p class="text-muted">Detailed description about the eighth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 7 -->
+    <!-- <div class="modal fade" id="galleryModal7" tabindex="-1" aria-labelledby="galleryModal7Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image7.jpeg" class="img-fluid" alt="Gallery Image 7">
+                    <h5 class="fw-bold mt-3">Image Title 7</h5>
+                    <p class="text-muted">Detailed description about the seventh image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 9 -->
-<div class="modal fade" id="galleryModal9" tabindex="-1" aria-labelledby="galleryModal9Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image9.jpeg" class="img-fluid" alt="Gallery Image 9">
-                <h5 class="fw-bold mt-3">Image Title 9</h5>
-                <p class="text-muted">Detailed description about the ninth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 8 -->
+    <!-- <div class="modal fade" id="galleryModal8" tabindex="-1" aria-labelledby="galleryModal8Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image8.jpeg" class="img-fluid" alt="Gallery Image 8">
+                    <h5 class="fw-bold mt-3">Image Title 8</h5>
+                    <p class="text-muted">Detailed description about the eighth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 10 -->
-<div class="modal fade" id="galleryModal10" tabindex="-1" aria-labelledby="galleryModal10Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image10.jpeg" class="img-fluid" alt="Gallery Image 10">
-                <h5 class="fw-bold mt-3">Image Title 10</h5>
-                <p class="text-muted">Detailed description about the tenth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 9 -->
+    <!-- <div class="modal fade" id="galleryModal9" tabindex="-1" aria-labelledby="galleryModal9Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image9.jpeg" class="img-fluid" alt="Gallery Image 9">
+                    <h5 class="fw-bold mt-3">Image Title 9</h5>
+                    <p class="text-muted">Detailed description about the ninth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 11 -->
-<div class="modal fade" id="galleryModal11" tabindex="-1" aria-labelledby="galleryModal11Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image11.jpeg" class="img-fluid" alt="Gallery Image 11">
-                <h5 class="fw-bold mt-3">Image Title 11</h5>
-                <p class="text-muted">Detailed description about the eleventh image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 10 -->
+    <!-- <div class="modal fade" id="galleryModal10" tabindex="-1" aria-labelledby="galleryModal10Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image10.jpeg" class="img-fluid" alt="Gallery Image 10">
+                    <h5 class="fw-bold mt-3">Image Title 10</h5>
+                    <p class="text-muted">Detailed description about the tenth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 12 -->
-<div class="modal fade" id="galleryModal12" tabindex="-1" aria-labelledby="galleryModal12Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image12.jpeg" class="img-fluid" alt="Gallery Image 12">
-                <h5 class="fw-bold mt-3">Image Title 12</h5>
-                <p class="text-muted">Detailed description about the twelfth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 11 -->
+    <!-- <div class="modal fade" id="galleryModal11" tabindex="-1" aria-labelledby="galleryModal11Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image11.jpeg" class="img-fluid" alt="Gallery Image 11">
+                    <h5 class="fw-bold mt-3">Image Title 11</h5>
+                    <p class="text-muted">Detailed description about the eleventh image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 13 -->
-<div class="modal fade" id="galleryModal13" tabindex="-1" aria-labelledby="galleryModal13Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image13.jpeg" class="img-fluid" alt="Gallery Image 13">
-                <h5 class="fw-bold mt-3">Image Title 13</h5>
-                <p class="text-muted">Detailed description about the thirteenth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 12 -->
+    <!-- <div class="modal fade" id="galleryModal12" tabindex="-1" aria-labelledby="galleryModal12Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image12.jpeg" class="img-fluid" alt="Gallery Image 12">
+                    <h5 class="fw-bold mt-3">Image Title 12</h5>
+                    <p class="text-muted">Detailed description about the twelfth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 14 -->
-<div class="modal fade" id="galleryModal14" tabindex="-1" aria-labelledby="galleryModal14Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image14.jpeg" class="img-fluid" alt="Gallery Image 14">
-                <h5 class="fw-bold mt-3">Image Title 14</h5>
-                <p class="text-muted">Detailed description about the fourteenth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 13 -->
+    <!-- <div class="modal fade" id="galleryModal13" tabindex="-1" aria-labelledby="galleryModal13Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image13.jpeg" class="img-fluid" alt="Gallery Image 13">
+                    <h5 class="fw-bold mt-3">Image Title 13</h5>
+                    <p class="text-muted">Detailed description about the thirteenth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 15 -->
-<div class="modal fade" id="galleryModal15" tabindex="-1" aria-labelledby="galleryModal15Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image15.jpeg" class="img-fluid" alt="Gallery Image 15">
-                <h5 class="fw-bold mt-3">Image Title 15</h5>
-                <p class="text-muted">Detailed description about the fifteenth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal 16 -->
-<div class="modal fade" id="galleryModal16" tabindex="-1" aria-labelledby="galleryModal16Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image16.jpeg" class="img-fluid" alt="Gallery Image 16">
-                <h5 class="fw-bold mt-3">Image Title 16</h5>
-                <p class="text-muted">Detailed description about the sixteenth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 14 -->
+    <!-- <div class="modal fade" id="galleryModal14" tabindex="-1" aria-labelledby="galleryModal14Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image14.jpeg" class="img-fluid" alt="Gallery Image 14">
+                    <h5 class="fw-bold mt-3">Image Title 14</h5>
+                    <p class="text-muted">Detailed description about the fourteenth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
-<!-- Modal 17 -->
-<div class="modal fade" id="galleryModal17" tabindex="-1" aria-labelledby="galleryModal17Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image17.jpeg" class="img-fluid" alt="Gallery Image 17">
-                <h5 class="fw-bold mt-3">Image Title 17</h5>
-                <p class="text-muted">Detailed description about the seventeenth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal 18 -->
-<div class="modal fade" id="galleryModal18" tabindex="-1" aria-labelledby="galleryModal18Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/past/image18.jpeg" class="img-fluid" alt="Gallery Image 18">
-                <h5 class="fw-bold mt-3">Image Title 18</h5>
-                <p class="text-muted">Detailed description about the eighteenth image.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Modal 15 -->
+    <!-- <div class="modal fade" id="galleryModal15" tabindex="-1" aria-labelledby="galleryModal15Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image15.jpeg" class="img-fluid" alt="Gallery Image 15">
+                    <h5 class="fw-bold mt-3">Image Title 15</h5>
+                    <p class="text-muted">Detailed description about the fifteenth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 
+    <!-- Modal 16 -->
+    <!-- <div class="modal fade" id="galleryModal16" tabindex="-1" aria-labelledby="galleryModal16Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image16.jpeg" class="img-fluid" alt="Gallery Image 16">
+                    <h5 class="fw-bold mt-3">Image Title 16</h5>
+                    <p class="text-muted">Detailed description about the sixteenth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
 
+    <!-- Modal 17 -->
+    <!-- <div class="modal fade" id="galleryModal17" tabindex="-1" aria-labelledby="galleryModal17Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image17.jpeg" class="img-fluid" alt="Gallery Image 17">
+                    <h5 class="fw-bold mt-3">Image Title 17</h5>
+                    <p class="text-muted">Detailed description about the seventeenth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
 
-
+    <!-- Modal 18 -->
+    <!-- <div class="modal fade" id="galleryModal18" tabindex="-1" aria-labelledby="galleryModal18Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="img/past/image18.jpeg" class="img-fluid" alt="Gallery Image 18">
+                    <h5 class="fw-bold mt-3">Image Title 18</h5>
+                    <p class="text-muted">Detailed description about the eighteenth image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
 
     <div class="bg-dark py-5">
         <div class="container py-4">
@@ -838,6 +1417,43 @@
         </div>
     </div>
 
+    <script>
+        const timeline = document.querySelector('.timeline');
+        const timelineContainers = document.querySelectorAll('.timeline-container');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    timeline.classList.add('show-line');
+                    timeline.classList.remove('hide-line');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.8
+        });
+
+        timelineContainers.forEach(container => {
+            observer.observe(container);
+        });
+
+        window.addEventListener('scroll', () => {
+            const timelineRect = timeline.getBoundingClientRect();
+            const top = timelineRect.top;
+            const bottom = timelineRect.bottom;
+
+            if (top > window.innerHeight / 2 || bottom < window.innerHeight / 2) {
+                timeline.classList.remove('show-line');
+                timeline.classList.add('hide-line');
+            } else {
+                timeline.classList.add('show-line');
+                timeline.classList.remove('hide-line');
+            }
+        });
+    </script>
+
+
     <script data-cfasync="false" src="js/email-decode.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 
@@ -847,4 +1463,5 @@
 
     <script src="js/script.js"></script>
 </body>
+
 </html>
